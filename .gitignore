@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Project_Prop/Assets/TextMesh Pro
+/Project_Prop/Temp
+/Project_Prop/UserSettings
+/Project_Prop/ProjectSettings
+/Project_Prop/Library
