@@ -102,8 +102,8 @@
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Forms\LoadLevelUIForm.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Scripts\Autonomous UI\Generic\StringInputField.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Scripts\ReadOnlyProperties\ServerAddressProperty.cs" />
-    <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Scripts\ReadOnlyProperties\CurrentRoomPlayerTtlProperty.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\Shared Assets\Scripts\ThirdPersonUserControl.cs" />
+    <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Scripts\ReadOnlyProperties\CurrentRoomPlayerTtlProperty.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\PunCockpit\Scripts\ReadOnlyProperties\CurrentRoomEmptyRoomTtlProperty.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\SlotRacerSplashScreen.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\DemoProcedural\Scripts\ProceduralController.cs" />
