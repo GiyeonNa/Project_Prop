@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 
 	protected PlayerManager playerManager;
 
-	void Awake()
+	protected void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 		PV = GetComponent<PhotonView>();
@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	{
 		if(!PV.IsMine)
 			return;
-
 		rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
 	}
 
