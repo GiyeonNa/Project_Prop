@@ -8,8 +8,9 @@ using System.IO;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
 	public static RoomManager Instance;
+    private int seekPlayer;
 
-	void Awake()
+    void Awake()
 	{
 		if(Instance)
 		{
@@ -36,7 +37,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	{
 		if(scene.buildIndex == 1 || scene.buildIndex == 2) // We're in the game scene
 		{
-			PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            seekPlayer = Random.Range(0, PhotonNetwork.CurrentRoom.PlayerCount);
+			if(PhotonNetwork.LocalPlayer == PhotonNetwork.PlayerList[seekPlayer])
+            {
+				PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SeekPlayerManager"), Vector3.zero, Quaternion.identity);
+			}
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerManager"), Vector3.zero, Quaternion.identity);
 		}
 	}
 }

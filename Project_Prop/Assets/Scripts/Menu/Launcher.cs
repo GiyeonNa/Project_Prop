@@ -49,7 +49,9 @@ public class Launcher : MonoBehaviourPunCallbacks
 		{
 			return;
 		}
-		PhotonNetwork.CreateRoom(roomNameInputField.text);
+		RoomOptions roomOptions = new RoomOptions();
+		roomOptions.MaxPlayers = 8; // 인원 지정.
+		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions);
 		
 		MenuManager.Instance.OpenMenu("loading");
 	}

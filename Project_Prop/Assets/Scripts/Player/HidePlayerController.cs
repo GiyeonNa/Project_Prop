@@ -14,15 +14,17 @@ public class HidePlayerController : PlayerController
 
 	MeshFilter selfMeshFilter;
 	MeshRenderer selfMeshRenderer;
+	CapsuleCollider selfCapsuleCollider;
 	[SerializeField] MeshFilter changeMeshFilter;
-	[SerializeField] MeshRenderer changetMeshRenderer;
-
+	[SerializeField] MeshRenderer changeMeshRenderer;
+	[SerializeField] MeshCollider changeMeshCollider;
 
 	private void Awake()
     {
 		base.Awake();
 		selfMeshFilter = GetComponent<MeshFilter>();
 		selfMeshRenderer= GetComponent<MeshRenderer>();
+		selfCapsuleCollider = GetComponent<CapsuleCollider>();
 
 	}
 
@@ -156,13 +158,12 @@ public class HidePlayerController : PlayerController
 		if (targetPV.gameObject == null)
 			return;
 
-
-		//gameObject.GetComponent<MeshFilter>().mesh = targetPV.gameObject.GetComponent<MeshFilter>().mesh;
-		//gameObject.GetComponent<MeshRenderer>().material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
-
-		if (!changetMeshRenderer.enabled) changetMeshRenderer.enabled = true;
+		if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
+		if(!changeMeshCollider.enabled) changeMeshCollider.enabled = true;
 		selfMeshRenderer.enabled = false;
+		selfCapsuleCollider.enabled = false;
 		changeMeshFilter.mesh = targetPV.gameObject.GetComponent<MeshFilter>().mesh;
-		changetMeshRenderer.material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
+		gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>().sharedMesh;
+		changeMeshRenderer.material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
 	}
 }

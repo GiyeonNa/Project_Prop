@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6275395458852813283}
   - component: {fileID: 240277822215983698}
   - component: {fileID: 8870933762259578217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6783453874844594526}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RifleObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2704969910483103853}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2787880311507641229}
   - component: {fileID: 2257999383346367345}
   - component: {fileID: 5346738967689994363}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthbarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 871835176153346796}
   - component: {fileID: 8776340072375996560}
   - component: {fileID: 2103278391719392813}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 1400627782832329793}
   - component: {fileID: 1400627782842590529}
   - component: {fileID: 1400627782830426209}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400627782833968739}
   m_LocalRotation: {x: -0, y: 0.000000063325004, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.48000002, z: -4}
+  m_LocalPosition: {x: 0, y: 0.23, z: -2.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 5294303273687055271}
   - component: {fileID: 7578015973558144085}
   - component: {fileID: 1444321761589495474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 8649757930714142937}
   - component: {fileID: 5629043183457495975}
   - component: {fileID: 288575280158678337}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 3858162530370232295}
   - component: {fileID: 3704729074776541129}
   - component: {fileID: 7630757142964392013}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 1474674816090166008}
   - component: {fileID: 8228173831737553671}
   - component: {fileID: 7764238844504354233}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HidePlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,9 +861,10 @@ MonoBehaviour:
   selfCam: {fileID: 1400627782832329793}
   layerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 55
   changeMeshFilter: {fileID: 2739070662652474113}
-  changetMeshRenderer: {fileID: 6842387043140142030}
+  changeMeshRenderer: {fileID: 6842387043140142030}
+  changeMeshCollider: {fileID: 7559266302045329125}
 --- !u!1 &5376546693947769886
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +876,7 @@ GameObject:
   - component: {fileID: 5376546693947769887}
   - component: {fileID: 5376546693947769881}
   - component: {fileID: 5376546693947769880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,7 +961,7 @@ GameObject:
   - component: {fileID: 5934201641592524434}
   - component: {fileID: 5868720365543316856}
   - component: {fileID: 553542724778565805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1062,7 @@ GameObject:
   - component: {fileID: 87464030986806252}
   - component: {fileID: 3928226517218049408}
   - component: {fileID: 2864181399265432276}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1120,7 @@ GameObject:
   - component: {fileID: 5938818215540506199}
   - component: {fileID: 1085009342257546554}
   - component: {fileID: 2383879677278639076}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8695911875157105401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6416827362435940040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1227,7 +1228,7 @@ GameObject:
   - component: {fileID: 7532554798902289297}
   - component: {fileID: 5843501354300267775}
   - component: {fileID: 14230582448255591}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1310,7 +1311,8 @@ GameObject:
   - component: {fileID: 6209919402577698294}
   - component: {fileID: 6842387043140142030}
   - component: {fileID: 2739070662652474113}
-  m_Layer: 0
+  - component: {fileID: 7559266302045329125}
+  m_Layer: 3
   m_Name: ChangeMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1382,6 +1384,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7928133161046752076}
   m_Mesh: {fileID: 0}
+--- !u!64 &7559266302045329125
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928133161046752076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8375253604959373560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2064616479189642906}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1429,7 +1445,7 @@ GameObject:
   - component: {fileID: 1448669577521259136}
   - component: {fileID: 8595614432247254644}
   - component: {fileID: 4159073648945759721}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8255164801611460821}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PistolObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

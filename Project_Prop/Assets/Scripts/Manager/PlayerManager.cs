@@ -9,12 +9,12 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerManager : MonoBehaviour
 {
-	PhotonView PV;
+	protected PhotonView PV;
 
-	GameObject controller;
+	protected GameObject controller;
 
-	int kills;
-	int deaths;
+	protected int kills;
+	protected int deaths;
 
 	void Awake()
 	{
@@ -29,12 +29,10 @@ public class PlayerManager : MonoBehaviour
 		}
 	}
 
-	void CreateController()
+    public virtual void CreateController()
 	{
 		Transform spawnpoint = SpawnManager.Instance.GetSpawnpoint();
 		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
-		Debug.Log("Create Player");
-		//controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
 	}
 
 	public void Die()
