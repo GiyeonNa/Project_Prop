@@ -47,20 +47,20 @@ public class PlayerManager : MonoBehaviour
 		PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 	}
 
-	public void GetKill()
-	{
-		PV.RPC(nameof(RPC_GetKill), PV.Owner);
-	}
+	//public void GetKill()
+	//{
+	//	PV.RPC(nameof(RPC_GetKill), PV.Owner);
+	//}
 
-	[PunRPC]
-	void RPC_GetKill()
-	{
-		kills++;
+	//[PunRPC]
+	//void RPC_GetKill()
+	//{
+	//	kills++;
 
-		Hashtable hash = new Hashtable();
-		hash.Add("kills", kills);
-		PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-	}
+	//	Hashtable hash = new Hashtable();
+	//	hash.Add("kills", kills);
+	//	PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+	//}
 
 	public static PlayerManager Find(Player player)
 	{

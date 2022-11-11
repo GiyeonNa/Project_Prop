@@ -19,15 +19,20 @@ public class SingleShotGun : Gun
 		Shoot();
 	}
 
-	void Shoot()
+    void Shoot()
 	{
 		Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 		ray.origin = cam.transform.position;
 		if(Physics.Raycast(ray, out RaycastHit hit))
 		{
-			hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+			//???? 모습이 변하면 맞지 않는다.
+			hit.transform.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+			hit.transform.gameObject.GetComponentInParent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+			//hit.collider
 			PV.RPC("RPC_Shoot", RpcTarget.All, hit.point, hit.normal);
-		}
+
+            //오인사격시 자신에게 피해
+        }
 	}
 
 	[PunRPC]

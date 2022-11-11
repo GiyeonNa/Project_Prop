@@ -92,22 +92,23 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
 	}
 
-	public void TakeDamage(float damage)
+	public virtual void TakeDamage(float damage)
 	{
 		PV.RPC(nameof(RPC_TakeDamage), PV.Owner, damage);
 	}
 
 	[PunRPC]
-	void RPC_TakeDamage(float damage, PhotonMessageInfo info)
+	public virtual void RPC_TakeDamage(float damage, PhotonMessageInfo info)
 	{
 		currentHealth -= damage;
-
+		Debug.Log(currentHealth);
 		healthbarImage.fillAmount = currentHealth / maxHealth;
+		Debug.Log(healthbarImage.fillAmount);
 
 		if(currentHealth <= 0)
 		{
 			Die();
-			PlayerManager.Find(info.Sender).GetKill();
+			//PlayerManager.Find(info.Sender).GetKill();
 		}
 	}
 

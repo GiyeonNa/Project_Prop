@@ -122,8 +122,8 @@ public class HidePlayerController : PlayerController
 			{
 				if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
 				GameObject tempHit = hit.collider.gameObject;
-				Debug.Log("Ray Hit " + hit.transform.gameObject.name);
-				Debug.Log(tempHit.GetPhotonView());
+				//Debug.Log("Ray Hit " + hit.transform.gameObject.name);
+				//Debug.Log(tempHit.GetPhotonView());
 				PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
 			}	
 		}		
