@@ -121,30 +121,16 @@ public class HidePlayerController : PlayerController
 			if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
 			{
 				if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
+				
 				GameObject tempHit = hit.collider.gameObject;
-				//Debug.Log("Ray Hit " + hit.transform.gameObject.name);
-				//Debug.Log(tempHit.GetPhotonView());
+				//PhotonView 말고 다른 조건도 생각 해볼것
+				//if (tempHit.layer == 6) 
+				//{
+				//	PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.gameObject);
+				//}
 				PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
 			}	
 		}		
-	}
-
-	[PunRPC]
-	void RPC_Change()
-	{
-		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-		Ray ray = selfCam.ScreenPointToRay(screenCenterPoint);
-
-		if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
-		{
-			//Raycasthit은 타입으로 지원하지않음
-			//Vector3 -> Transform
-			Debug.Log(hit.transform.gameObject.name);
-			GameObject obj = hit.collider.gameObject;
-			Mesh mesh = obj.GetComponent<MeshFilter>().mesh;
-			selfMeshFilter.mesh = mesh;
-
-		}
 	}
 
 	[PunRPC]
@@ -158,12 +144,30 @@ public class HidePlayerController : PlayerController
 		if (targetPV.gameObject == null)
 			return;
 
+		//예외처리 수정
+		//가져올것
+		//MeshFilter : 겉모습
+		//MeshCollider : 충돌 범위
+		//MeshRenderer : 색상, 여러개면 다 가져와야함
 		if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
 		if(!changeMeshCollider.enabled) changeMeshCollider.enabled = true;
 		selfMeshRenderer.enabled = false;
 		selfCapsuleCollider.enabled = false;
-		changeMeshFilter.mesh = targetPV.gameObject.GetComponent<MeshFilter>().mesh;
-		gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>().sharedMesh;
-		changeMeshRenderer.material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
+		changeMeshFilter.mesh = targetPV.gameObject.GetComponent<MeshFilter>()?.mesh;
+		changeMeshCollider.sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>()?.sharedMesh;
+		changeMeshRenderer.materials = targetPV.gameObject.GetComponent<MeshRenderer>()?.materials;
 	}
+
+
+	//[PunRPC]
+	//void RPC_PropChangeModel()
+	//{
+	//	if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
+	//	if (!changeMeshCollider.enabled) changeMeshCollider.enabled = true;
+	//	selfMeshRenderer.enabled = false;
+	//	selfCapsuleCollider.enabled = false;
+	//	changeMeshFilter.mesh = targetPV.gameObject.GetComponent<MeshFilter>().mesh;
+	//	gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>().sharedMesh;
+	//	changeMeshRenderer.material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
+	//}
 }
