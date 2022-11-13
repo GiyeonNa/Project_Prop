@@ -106,6 +106,7 @@ public class HidePlayerController : PlayerController
 
 	void Die()
 	{
+		//관점 캠 만들기
 		playerManager.Die();
 	}
 
