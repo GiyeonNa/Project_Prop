@@ -124,12 +124,12 @@ public class HidePlayerController : PlayerController
 				if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
 				
 				GameObject tempHit = hit.collider.gameObject;
-				//PhotonView 말고 다른 조건도 생각 해볼것
-				//if (tempHit.layer == 6) 
-				//{
-				//	PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.gameObject);
-				//}
-				PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
+                //PhotonView 말고 다른 조건도 생각 해볼것
+                //if (tempHit.layer == 6)
+                //{
+                //    PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.gameObject.layer);
+                //}
+                PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
 			}	
 		}		
 	}
@@ -158,17 +158,4 @@ public class HidePlayerController : PlayerController
 		changeMeshCollider.sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>()?.sharedMesh;
 		changeMeshRenderer.materials = targetPV.gameObject.GetComponent<MeshRenderer>()?.materials;
 	}
-
-
-	//[PunRPC]
-	//void RPC_PropChangeModel()
-	//{
-	//	if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
-	//	if (!changeMeshCollider.enabled) changeMeshCollider.enabled = true;
-	//	selfMeshRenderer.enabled = false;
-	//	selfCapsuleCollider.enabled = false;
-	//	changeMeshFilter.mesh = targetPV.gameObject.GetComponent<MeshFilter>().mesh;
-	//	gameObject.GetComponentInChildren<MeshCollider>().sharedMesh = targetPV.gameObject.GetComponent<MeshCollider>().sharedMesh;
-	//	changeMeshRenderer.material = targetPV.gameObject.GetComponent<MeshRenderer>().material;
-	//}
 }

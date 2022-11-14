@@ -32,37 +32,45 @@ public class PlayerManager : MonoBehaviour
     public virtual void CreateController()
 	{
 		Transform spawnpoint = SpawnManager.Instance.GetSpawnpoint();
-		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
+		//controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
+	}
+
+	public void CreateObserver()
+    {
+		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "ObserverPlayerController"), Vector3.zero, Quaternion.identity, 0, new object[] { PV.ViewID });
 	}
 
 	public void Die()
 	{
 		PhotonNetwork.Destroy(controller);
-		CreateController();
+		//다시 재생성
+		//CreateController();
 
-		deaths++;
+		//재생성이 아닌 관전자로 생성해야함
+		CreateObserver();
 
-		Hashtable hash = new Hashtable();
-		hash.Add("deaths", deaths);
-		PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+		//deaths++;
+		//Hashtable hash = new Hashtable();
+		//hash.Add("deaths", deaths);
+		//PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 	}
 
-	//public void GetKill()
-	//{
-	//	PV.RPC(nameof(RPC_GetKill), PV.Owner);
-	//}
+    //public void GetKill()
+    //{
+    //    PV.RPC(nameof(RPC_GetKill), PV.Owner);
+    //}
 
-	//[PunRPC]
-	//void RPC_GetKill()
-	//{
-	//	kills++;
+    //[PunRPC]
+    //void RPC_GetKill()
+    //{
+    //    kills++;
 
-	//	Hashtable hash = new Hashtable();
-	//	hash.Add("kills", kills);
-	//	PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-	//}
+    //    Hashtable hash = new Hashtable();
+    //    hash.Add("kills", kills);
+    //    PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    //}
 
-	public static PlayerManager Find(Player player)
+    public static PlayerManager Find(Player player)
 	{
 		return FindObjectsOfType<PlayerManager>().SingleOrDefault(x => x.PV.Owner == player);
 	}

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\PlayerListItem.cs" />
     <Compile Include="Assets\Scripts\Billboard.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+    <Compile Include="Assets\Scripts\Player\ObserverPlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerGroundCheck.cs" />
     <Compile Include="Assets\Scripts\Gun\Gun.cs" />
     <Compile Include="Assets\Scripts\Manager\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\HidePlayerManager.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />

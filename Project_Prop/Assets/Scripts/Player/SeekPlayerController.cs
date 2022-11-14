@@ -21,7 +21,8 @@ public class SeekPlayerController : PlayerController
 		}
 		else
 		{
-			Destroy(GetComponentInChildren<Camera>().gameObject);
+			//Destroy(GetComponentInChildren<Camera>().gameObject);
+			GetComponentInChildren<Camera>().gameObject.SetActive(false);
 			Destroy(rb);
 			Destroy(ui);
 		}
