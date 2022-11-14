@@ -121,16 +121,17 @@ public class HidePlayerController : PlayerController
 
 			if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
 			{
-				if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
-				
-				GameObject tempHit = hit.collider.gameObject;
+                //if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
+
                 //PhotonView 말고 다른 조건도 생각 해볼것
                 //if (tempHit.layer == 6)
                 //{
                 //    PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.gameObject.layer);
                 //}
+
+                GameObject tempHit = hit.collider.gameObject;
                 PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
-			}	
+            }	
 		}		
 	}
 
@@ -142,15 +143,16 @@ public class HidePlayerController : PlayerController
 
 		PhotonView targetPV = PhotonView.Find(targetPropID);
 
-		if (targetPV.gameObject == null)
-			return;
 
-		//예외처리 수정
-		//가져올것
-		//MeshFilter : 겉모습
-		//MeshCollider : 충돌 범위
-		//MeshRenderer : 색상, 여러개면 다 가져와야함
-		if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
+        if (targetPV.gameObject == null)
+            return;
+
+        //예외처리 수정
+        //가져올것
+        //MeshFilter : 겉모습
+        //MeshCollider : 충돌 범위
+        //MeshRenderer : 색상, 여러개면 다 가져와야함
+        if (!changeMeshRenderer.enabled) changeMeshRenderer.enabled = true;
 		if(!changeMeshCollider.enabled) changeMeshCollider.enabled = true;
 		selfMeshRenderer.enabled = false;
 		selfCapsuleCollider.enabled = false;

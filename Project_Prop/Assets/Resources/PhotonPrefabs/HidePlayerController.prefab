@@ -277,7 +277,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   selfCam: {fileID: 1400627782832329793}
   layerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 64
   changeMeshFilter: {fileID: 2739070662652474113}
   changeMeshRenderer: {fileID: 6842387043140142030}
   changeMeshCollider: {fileID: 7559266302045329125}
