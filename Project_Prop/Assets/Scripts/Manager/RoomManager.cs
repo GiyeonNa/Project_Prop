@@ -37,10 +37,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 	{
 		if(scene.buildIndex == 1 || scene.buildIndex == 2) // We're in the game scene
 		{
+			//각 랜덤
 			seekPlayer = Random.Range(1, PhotonNetwork.CurrentRoom.PlayerCount + 1);
 			Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount + 1);
 			Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
 			Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
+
 			if (PhotonNetwork.LocalPlayer.ActorNumber == seekPlayer)
 			{
                 Debug.Log("u r Seek");
