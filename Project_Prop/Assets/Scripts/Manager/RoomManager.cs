@@ -43,17 +43,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
 			Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
 			Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
 
-			if (PhotonNetwork.LocalPlayer.ActorNumber == seekPlayer)
-			{
-                Debug.Log("u r Seek");
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SeekPlayerManager"), Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerManager"), Vector3.zero, Quaternion.identity);
-            }
+			//if (PhotonNetwork.LocalPlayer.ActorNumber == seekPlayer)
+			//{
+   //             Debug.Log("u r Seek");
+   //             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "SeekPlayerManager"), Vector3.zero, Quaternion.identity);
+   //         }
+   //         else
+   //         {
+   //             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerManager"), Vector3.zero, Quaternion.identity);
+   //         }
 
-            //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerManager"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "HidePlayerManager"), Vector3.zero, Quaternion.identity);
         }
 	}
 }

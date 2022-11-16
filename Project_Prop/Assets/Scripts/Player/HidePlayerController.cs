@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Cinemachine;
 
 public class HidePlayerController : PlayerController
 {
@@ -32,8 +33,8 @@ public class HidePlayerController : PlayerController
 	{
         if (!PV.IsMine)
         {
-			//Destroy(GetComponentInChildren<Camera>().gameObject);
 			GetComponentInChildren<Camera>().gameObject.SetActive(false);
+			//GetComponentInChildren<CinemachineFreeLook>().gameObject.SetActive(false);
 			Destroy(rb);
 			Destroy(ui);
 		}
@@ -44,7 +45,8 @@ public class HidePlayerController : PlayerController
 		if (!PV.IsMine)
 			return;
 
-		LookAround();
+		//LookAround();
+		//Moveproto();
 		Move();
 		Jump();
 		Copy();
@@ -81,7 +83,7 @@ public class HidePlayerController : PlayerController
 		cam.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
 	}
 
-	private void Move()
+	private void Moveproto()
 	{
 		Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		bool isMove = moveInput.magnitude != 0;
@@ -93,6 +95,23 @@ public class HidePlayerController : PlayerController
 
 			transform.position += moveDir * Time.deltaTime * 5f;
 		}
+	}
+
+	private void Move()
+	{
+		Vector3 moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+		if (moveInput.sqrMagnitude > 1f)
+		{
+			moveInput = moveInput.normalized;
+		}
+
+		Vector3 forwardVec = new Vector3(selfCam.transform.forward.x, 0f, selfCam.transform.forward.z).normalized;
+		Vector3 rightVec = new Vector3(selfCam.transform.right.x, 0f, selfCam.transform.right.z).normalized;
+
+		Vector3 moveVec = moveInput.x * rightVec + moveInput.z * forwardVec;
+
+
+		transform.position += (moveVec * walkSpeed * Time.deltaTime);
 	}
 
 
