@@ -9,9 +9,20 @@ public class ObserverPlayerController : MonoBehaviour
     public Camera[] cameras;
     public int cameraIndex = 0;
     public Camera tempCamera;
+    public Canvas observeCanvas;
+    private PhotonView pv;
+
+    private void Awake()
+    {
+        pv = GetComponent<PhotonView>();
+    }
 
     private void Start()
     {
+        if (!pv.IsMine)
+        {
+            Destroy(observeCanvas);
+        }
         cameras = GameObject.FindObjectsOfType<Camera>(true);
         cameras[cameraIndex].gameObject.SetActive(true);
     }

@@ -71,6 +71,8 @@ MonoBehaviour:
   cameras: []
   cameraIndex: 0
   tempCamera: {fileID: 0}
+  observeCanvas: {fileID: 3405192250219046633}
+  pv: {fileID: 0}
 --- !u!1 &2082424188298894752
 GameObject:
   m_ObjectHideFlags: 0

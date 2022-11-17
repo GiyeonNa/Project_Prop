@@ -10,7 +10,6 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class PlayerManager : MonoBehaviour
 {
 	protected PhotonView PV;
-
 	protected GameObject controller;
 
 	protected int kills;
@@ -43,11 +42,10 @@ public class PlayerManager : MonoBehaviour
 	public void Die()
 	{
 		PhotonNetwork.Destroy(controller);
-		//다시 재생성
-		//CreateController();
-
 		//재생성이 아닌 관전자로 생성해야함
 		CreateObserver();
+		//다시 재생성
+		//CreateController();
 
 		//deaths++;
 		//Hashtable hash = new Hashtable();

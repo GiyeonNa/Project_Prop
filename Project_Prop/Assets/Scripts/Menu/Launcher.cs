@@ -18,8 +18,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 	[SerializeField] Transform playerListContent;
 	[SerializeField] GameObject PlayerListItemPrefab;
 	[SerializeField] GameObject startGameButton;
-	private static int PlayerID = -1;
-
 
 	void Awake()
 	{
@@ -65,16 +63,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 		Player[] players = PhotonNetwork.PlayerList;
 
-		//int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-		//for (int i = 0; i < players.Length; i += 1)
-		//{
-		//	if (players[i].ActorNumber == actorNumber)
-		//	{
-		//		PlayerID = i;
-		//		break;
-		//	}
-		//}
-
 		foreach (Transform child in playerListContent)
 		{
 			Destroy(child.gameObject);
@@ -84,9 +72,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 		{
 			Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
 		}
-
-	
-
 
 		startGameButton.SetActive(PhotonNetwork.IsMasterClient);
 	}
