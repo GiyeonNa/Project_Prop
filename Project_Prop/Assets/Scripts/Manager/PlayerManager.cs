@@ -36,7 +36,8 @@ public class PlayerManager : MonoBehaviour
 
 	public void CreateObserver()
     {
-		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "ObserverPlayerController"), Vector3.zero, Quaternion.identity, 0, new object[] { PV.ViewID });
+		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "ObserverPlayerController"), 
+											   Vector3.zero, Quaternion.identity, 0, new object[] { PV.ViewID });
 	}
 
 	public void Die()
@@ -70,6 +71,6 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Find(Player player)
 	{
-		return FindObjectsOfType<PlayerManager>().SingleOrDefault(x => x.PV.Owner == player);
+		return FindObjectsOfType<PlayerManager>().SingleOrDefault(x => (bool)(x.PV.Owner == player));
 	}
 }

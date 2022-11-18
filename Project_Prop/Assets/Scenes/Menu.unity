@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: title
+  menuName: TitleMenu
   open: 0
 --- !u!1 &527412674
 GameObject:
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: create room
+  menuName: CreateRoomMenu
   open: 0
 --- !u!1 &660748789
 GameObject:
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: room
+  menuName: RoomMenu
   open: 0
 --- !u!1 &689797179
 GameObject:
@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: error
+  menuName: ErrorMenu
   open: 0
 --- !u!1 &948926165
 GameObject:
@@ -4600,7 +4600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: find room
+  menuName: FindRoomMenu
   open: 0
 --- !u!1 &1946409278
 GameObject:
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c615795069bcf2419725c1e0e39b8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuName: loading
+  menuName: LoadingMenu
   open: 1
 --- !u!1 &2125027177
 GameObject:
@@ -5058,6 +5058,7 @@ MonoBehaviour:
   - {fileID: 660748791}
   - {fileID: 870107014}
   - {fileID: 1917619824}
+  preMenu: {fileID: 2037972234}
 --- !u!114 &2125027184
 MonoBehaviour:
   m_ObjectHideFlags: 0

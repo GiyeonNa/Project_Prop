@@ -7,40 +7,33 @@ public class MenuManager : MonoBehaviour
 	public static MenuManager Instance;
 
 	[SerializeField] Menu[] menus;
-
+	Dictionary<string, Menu> menuDic = new Dictionary<string, Menu>();
+	[SerializeField] Menu preMenu;
 	void Awake()
 	{
 		Instance = this;
-	}
+        foreach (var menu in menus)
+        {
+            menuDic[menu.name] = menu;
+        }
+    }
 
 	public void OpenMenu(string menuName)
 	{
-		for(int i = 0; i < menus.Length; i++)
-		{
-			if(menus[i].menuName == menuName)
-			{
-				menus[i].Open();
-			}
-			else if(menus[i].open)
-			{
-				CloseMenu(menus[i]);
-			}
-		}
+		if (preMenu.open) CloseMenu(preMenu);
+		preMenu = menuDic[menuName];
+		preMenu.Open();
 	}
 
-	public void OpenMenu(Menu menu)
-	{
-		for(int i = 0; i < menus.Length; i++)
-		{
-			if(menus[i].open)
-			{
-				CloseMenu(menus[i]);
-			}
-		}
-		menu.Open();
-	}
+	//Button On Click
+    public void OpenMenu(Menu menu)
+    {
+		if (preMenu.open) CloseMenu(preMenu);
+		preMenu = menuDic[menu.name];
+		preMenu.Open();
+    }
 
-	public void CloseMenu(Menu menu)
+    public void CloseMenu(Menu menu)
 	{
 		menu.Close();
 	}

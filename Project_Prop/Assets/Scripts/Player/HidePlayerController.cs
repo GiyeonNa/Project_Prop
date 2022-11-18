@@ -20,6 +20,8 @@ public class HidePlayerController : PlayerController
 	[SerializeField] MeshRenderer changeMeshRenderer;
 	[SerializeField] MeshCollider changeMeshCollider;
 
+
+
 	private void Awake()
     {
 		base.Awake();
@@ -99,7 +101,9 @@ public class HidePlayerController : PlayerController
 
 		if (Input.GetKeyUp(KeyCode.F))
 		{
+#if UNITY_EDITOR
 			Debug.Log("Press F");
+#endif 
 			Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
 			Ray ray = selfCam.ScreenPointToRay(screenCenterPoint);
 

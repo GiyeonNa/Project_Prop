@@ -26,21 +26,27 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 	void Start()
 	{
+#if UNITY_EDITOR
 		Debug.Log("Connecting to Master");
+#endif
 		PhotonNetwork.ConnectUsingSettings();
 	}
 
 	public override void OnConnectedToMaster()
 	{
+#if UNITY_EDITOR
 		Debug.Log("Connected to Master");
+#endif
 		PhotonNetwork.JoinLobby();
 		PhotonNetwork.AutomaticallySyncScene = true;
 	}
 
 	public override void OnJoinedLobby()
 	{
-		MenuManager.Instance.OpenMenu("title");
+		MenuManager.Instance.OpenMenu("TitleMenu");
+#if UNITY_EDITOR
 		Debug.Log("Joined Lobby");
+#endif
 	}
 
 	public void CreateRoom()
@@ -53,14 +59,13 @@ public class Launcher : MonoBehaviourPunCallbacks
 		roomOptions.MaxPlayers = 8; // 인원 지정.
 		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions);
 		
-		MenuManager.Instance.OpenMenu("loading");
+		MenuManager.Instance.OpenMenu("LoadingMenu");
 	}
 
 	public override void OnJoinedRoom()
 	{
-		MenuManager.Instance.OpenMenu("room");
+		MenuManager.Instance.OpenMenu("RoomMenu");
 		roomNameText.text = PhotonNetwork.CurrentRoom.Name;
-
 		Player[] players = PhotonNetwork.PlayerList;
 
 		foreach (Transform child in playerListContent)
@@ -84,12 +89,15 @@ public class Launcher : MonoBehaviourPunCallbacks
 	public override void OnCreateRoomFailed(short returnCode, string message)
 	{
 		errorText.text = "Room Creation Failed: " + message;
+#if UNITY_EDITOR
 		Debug.LogError("Room Creation Failed: " + message);
-		MenuManager.Instance.OpenMenu("error");
+#endif
+		MenuManager.Instance.OpenMenu("ErrorMenu");
 	}
 
 	public void StartGame()
 	{
+		//1 TestMap 2 GameMap
 		//PhotonNetwork.LoadLevel(1);
 		PhotonNetwork.LoadLevel(2);
 	}
@@ -97,18 +105,18 @@ public class Launcher : MonoBehaviourPunCallbacks
 	public void LeaveRoom()
 	{
 		PhotonNetwork.LeaveRoom();
-		MenuManager.Instance.OpenMenu("loading");
+		MenuManager.Instance.OpenMenu("LoadingMenu");
 	}
 
 	public void JoinRoom(RoomInfo info)
 	{
 		PhotonNetwork.JoinRoom(info.Name);
-		MenuManager.Instance.OpenMenu("loading");
+		MenuManager.Instance.OpenMenu("LoadingMenu");
 	}
 
 	public override void OnLeftRoom()
 	{
-		MenuManager.Instance.OpenMenu("title");
+		MenuManager.Instance.OpenMenu("TitleMenu");
 	}
 
 	public override void OnRoomListUpdate(List<RoomInfo> roomList)

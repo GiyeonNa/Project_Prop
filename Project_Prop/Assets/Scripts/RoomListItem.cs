@@ -6,14 +6,18 @@ using UnityEngine;
 
 public class RoomListItem : MonoBehaviour
 {
-	[SerializeField] TMP_Text text;
+	[SerializeField] TMP_Text roomNameText;
+	[SerializeField] TMP_Text curPlayerText;
+	[SerializeField] TMP_Text maxPlayerText;
 
 	public RoomInfo info;
 
 	public void SetUp(RoomInfo _info)
 	{
 		info = _info;
-		text.text = _info.Name;
+		roomNameText.text = _info.Name;
+		curPlayerText.text = _info.PlayerCount.ToString();
+		maxPlayerText.text = _info.MaxPlayers.ToString();
 	}
 
 	public void OnClick()
