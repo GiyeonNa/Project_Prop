@@ -69,15 +69,9 @@ public class SeekPlayerController : PlayerController
 			}
 		}
 
-		if (Input.GetMouseButtonDown(0))
-		{
-			items[itemIndex].Use();
-		}
+		if (Input.GetMouseButtonDown(0)) items[itemIndex].Use();
 
-		if (transform.position.y < -10f) // Die if you fall out of the world
-		{
-			Die();
-		}
+		if (transform.position.y < -10f) Die(); // Die if you fall out of the world
 	}
 
 	void Look()
@@ -145,7 +139,6 @@ public class SeekPlayerController : PlayerController
 
 		rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
 	}
-
 
 	void Die()
 	{

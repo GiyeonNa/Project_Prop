@@ -9,17 +9,18 @@ public class LookAtCamera : MonoBehaviour
     public Transform target;
     Transform hitTransform;
     RaycastHit hit;
+    [SerializeField] LayerMask layermask;
 
     // Update is called once per frame
     void Update()
-    {
-
+    { 
         transform.LookAt(target);
         Vector3 dir = target.position - transform.position;
         Debug.DrawRay(transform.position, dir, Color.red);
 
-        if(Physics.Raycast(transform.position, dir, out hit))
+        if(Physics.Raycast(transform.position, dir, out hit, layermask))
         {
+            
             Color cor;
             if (hit.transform != hitTransform)
             {

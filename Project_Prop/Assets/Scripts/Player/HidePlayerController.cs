@@ -9,20 +9,19 @@ using Cinemachine;
 
 public class HidePlayerController : PlayerController
 {
+    #region 변수
     [SerializeField] Transform cam;
 	[SerializeField] Camera selfCam;
 	[SerializeField] LayerMask layerMask;
-
 	MeshFilter selfMeshFilter;
 	MeshRenderer selfMeshRenderer;
 	CapsuleCollider selfCapsuleCollider;
 	[SerializeField] MeshFilter changeMeshFilter;
 	[SerializeField] MeshRenderer changeMeshRenderer;
 	[SerializeField] MeshCollider changeMeshCollider;
+    #endregion
 
-
-
-	private void Awake()
+    private void Awake()
     {
 		base.Awake();
 		selfMeshFilter = GetComponent<MeshFilter>();
@@ -44,18 +43,14 @@ public class HidePlayerController : PlayerController
 
 	void Update()
 	{
-		if (!PV.IsMine)
-			return;
-
+		if (!PV.IsMine) return;
 		Move();
 		Jump();
 		Copy();
 		Rotate();
 
-		if (transform.position.y < -10f) // Die if you fall out of the world
-		{
-			Die();
-		}
+		// Die if you fall out of the world
+		if (transform.position.y < -10f) Die(); 
 	}
 
 	private void Rotate()
@@ -81,7 +76,6 @@ public class HidePlayerController : PlayerController
 		transform.position += (moveVec * walkSpeed * Time.deltaTime);
 	}
 
-
 	void Jump()
 	{
 		if (Input.GetKeyDown(KeyCode.Space) && grounded)
@@ -98,25 +92,13 @@ public class HidePlayerController : PlayerController
 
 	void Copy()
     {
-
 		if (Input.GetKeyUp(KeyCode.F))
 		{
-#if UNITY_EDITOR
-			Debug.Log("Press F");
-#endif 
 			Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
 			Ray ray = selfCam.ScreenPointToRay(screenCenterPoint);
 
 			if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
 			{
-                //if (!hit.transform.gameObject.GetComponent<PhotonView>()) return;
-
-                //PhotonView 말고 다른 조건도 생각 해볼것
-                //if (tempHit.layer == 6)
-                //{
-                //    PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.gameObject.layer);
-                //}
-
                 GameObject tempHit = hit.collider.gameObject;
                 PV.RPC("RPC_PropChangeModel", RpcTarget.All, tempHit.GetPhotonView().ViewID);
             }	
@@ -127,12 +109,8 @@ public class HidePlayerController : PlayerController
 	void RPC_PropChangeModel(int targetPropID)
 	{
 		PhotonView targetPV = PhotonView.Find(targetPropID);
+        if (targetPV.gameObject == null) return;
 
-
-        if (targetPV.gameObject == null)
-            return;
-
-        //예외처리 수정
         //가져올것
         //MeshFilter : 겉모습
         //MeshCollider : 충돌 범위
