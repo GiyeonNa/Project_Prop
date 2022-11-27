@@ -31,6 +31,7 @@ public class ObserverPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //missing되는 카메라 제외
             tempCamera = cameras[cameraIndex];
             if (cameraIndex == (cameras.Length - 2)) cameraIndex = -1;
             cameraIndex++;
