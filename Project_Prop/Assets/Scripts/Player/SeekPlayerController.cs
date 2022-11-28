@@ -13,6 +13,8 @@ public class SeekPlayerController : PlayerController
 	int itemIndex;
 	int previousItemIndex = -1;
 
+	[SerializeField] GameObject darkImg;	
+
 	void Start()
 	{
 		if (PV.IsMine)
@@ -26,6 +28,8 @@ public class SeekPlayerController : PlayerController
 			Destroy(rb);
 			Destroy(ui);
 		}
+		Destroy(darkImg, 10);
+
 	}
 
 	void Update()
@@ -142,6 +146,10 @@ public class SeekPlayerController : PlayerController
 
 	void Die()
 	{
-		playerManager.Die();
+		//관전이 아닌 게임이 끝나야함
+		//playerManager.Die();
+
+		Debug.Log("게임 종료, 술래 사망");
+
 	}
 }
