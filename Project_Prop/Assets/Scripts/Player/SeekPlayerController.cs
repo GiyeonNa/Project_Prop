@@ -28,6 +28,7 @@ public class SeekPlayerController : PlayerController
 			Destroy(rb);
 			Destroy(ui);
 		}
+		//가림막 제거
 		Destroy(darkImg, 10);
 
 	}
